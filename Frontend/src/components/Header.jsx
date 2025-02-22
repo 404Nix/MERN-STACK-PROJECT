@@ -4,7 +4,9 @@ import { Link } from 'react-router'
 const Header = () => {
   return (
     <div className=' bg-[#76ABAE] flex justify-between item-center w-full py-6 px-6 text-[#EEEEEE]'>
+      <Link to={'/all'}>
         <h1 className='font-semibold text-lg'>MERN</h1>
+      </Link>
         <div className='flex gap-5'>
             <Link to="/">Create User</Link>
             <Link to="/all">All User</Link>
