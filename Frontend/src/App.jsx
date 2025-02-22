@@ -11,8 +11,8 @@ const App = () => {
       <Header />
       <Routes>
         <Route exact path='/' element={<Create />} />
-        <Route exact path='/all' element={<Read />} />
-        <Route exact path='/Update' element={<Update />} />
+        <Route path='/all' element={<Read />} />
+        <Route path='/:id' element={<Update />} />
       </Routes>
     </>
   )

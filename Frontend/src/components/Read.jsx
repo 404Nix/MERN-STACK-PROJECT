@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Read = () => {
   const [data, setData] = useState([]);
@@ -65,9 +66,11 @@ const Read = () => {
             <p className="text-gray-400">{elem.email}</p>
             <p className="text-gray-400">Age: {elem.age}</p>
             <div className="flex gap-3 mt-3">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition">
-                Edit
-              </button>
+              <Link to={`/${elem._id}`}>
+                <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition">
+                  Edit
+                </button>
+              </Link>
               <button className="bg-red-500 hover:bg-red-900 text-white px-4 py-2 rounded-lg transition"
                 onClick={() => {
                   handleDelete(elem._id);
