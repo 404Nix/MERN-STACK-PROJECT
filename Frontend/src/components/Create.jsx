@@ -1,10 +1,16 @@
 import React, { useState } from "react";
+import ErrorAlert from "./ErrorAlert";
+import {useNavigate} from 'react-router-dom';
 
 const Create = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState(0);
+
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const submithandler = async (e) => {
     e.preventDefault();
@@ -21,12 +27,25 @@ const Create = () => {
 
     const result = await response.json();
 
-    if(!response.ok) console.log(result.error);
-    if(response.ok) console.log(result);
+    if(!response.ok){ 
+      console.log(result.error); 
+      setError(result.error)
+    };
+    if(response.ok){
+      console.log(result)
+      setError("");
+      setName("");
+      setEmail("");
+      setAge(0);
+
+      navigate("/all");
+    };
 
   }
 
   return (
+    <>
+    {error && <ErrorAlert error = {error} />}
     <form onSubmit={(e) => {
       submithandler(e);
     }} className="max-w-md mx-auto mt-20">
@@ -93,6 +112,7 @@ const Create = () => {
         Submit
       </button>
     </form>
+    </>
   );
 };
 
